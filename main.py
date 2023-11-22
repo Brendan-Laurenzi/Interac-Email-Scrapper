@@ -1,9 +1,15 @@
+# IMPORT DEPENDICIES
 import sys
+from PyQt6.QtWidgets import QApplication, QMainWindow
 
 # IMPORT GUI FILE
 from ui_interface import *
 
-from PyQt6.QtWidgets import QApplication, QMainWindow
+# IMPORT DATABASE 
+import database as db
+
+# IMPORT SCRAPPER
+import scrape
 
 ## MAIN WINDOW CLASS
 class MainWindow(QMainWindow):
@@ -12,10 +18,17 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # VARIABLES
         self.menuStatus = True
-        self.ui.menuBtn.clicked.connect(self.menuToggle)
 
-        
+        # INITIALIZE TABLE DATA
+        self.loadData()
+
+        # BUTTON CONNECTORS
+        self.ui.menuBtn.clicked.connect(self.menuToggle)
+        self.ui.updateButton.clicked.connect(self.loadData)
+
+    ## UI FUNCTIONS
 
     def menuToggle(self):
         if (self.menuStatus):
@@ -36,7 +49,20 @@ class MainWindow(QMainWindow):
             self.ui.settingsBtn.setText("Settings")
             self.ui.infoBtn.setText("Information")
             self.ui.helpBtn.setText("Help")
+
+    def loadData(self):
+        dataList = db.Database.get_all_emt_data()
+        self.ui.tableWidget.setRowCount(len(dataList))
+        for row, data in enumerate(dataList):
+            # Row Data ex. : ['2104673 ONTARIO INC', '2,500', 'N/A', datetime.datetime(2023, 10, 24, 17, 7), 'CAHfMDyz']
+            self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(data[0])) 
+            self.ui.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(data[1])) 
+            self.ui.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(data[2])) 
+            self.ui.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(str(data[3]))) 
+            self.ui.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(data[4]))
+
             
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()

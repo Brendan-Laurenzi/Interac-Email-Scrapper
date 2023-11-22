@@ -24,7 +24,7 @@ class Database:
         try:
             cursor = connection.cursor()
             cursor.execute("DROP TABLE received_emts")
-            cursor.execute("CREATE TABLE received_emts (name VARCHAR(99), amt DECIMAL(4,2), memo VARCHAR(500), date DATETIME, refID VARCHAR(99) PRIMARY KEY)") 
+            cursor.execute("CREATE TABLE received_emts (name VARCHAR(99), amt VARCHAR(99), memo VARCHAR(500), date DATETIME, refID VARCHAR(99) PRIMARY KEY)") 
             
         except MySQLdb.Error as e:
             print("MySQL Error:", e)
@@ -79,4 +79,5 @@ class Database:
             cursor.close()
             connection.close()
         
-#Database.wipe()
+if __name__ == "__main__":
+    Database.wipe()

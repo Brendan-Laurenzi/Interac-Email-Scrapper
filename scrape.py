@@ -15,22 +15,6 @@ def find_string(text, searchcase, endcase):
             index += 1
     return string
 
-def find_amount(email_text):
-    index = email_text.find("has sent you $")
-    amount = -1
-    if index == -1:
-       return -1
-    else:
-        index += 14
-        tempAmount = ""
-        while (email_text[index] != ' '):
-            if email_text[index] != ',':
-                tempAmount += email_text[index]
-            index += 1
-        if tempAmount != "":
-            amount = float(tempAmount)
-    return amount
-
 # Convert (Oct 5, 2023 2:20 PM) -> (2023-10-05 14:20:00)
 def convert_to_datetime(date): 
     # Extract Year
@@ -100,7 +84,7 @@ class emtEmail:
                     email_text = part.get_payload(decode=True).decode(part.get_content_charset(), errors="ignore")
 
             name = find_string(email_text, "From: ", "<")
-            amount = find_amount(email_text)
+            amount = find_string(email_text, "has sent you $", " ")
             memo = find_string(email_text, "Message:\r\n\r\n", "\r")
             date = convert_to_datetime(find_string(email_text, "Sent: ", "\r"))
             refID = find_string(email_text, "Reference Number: ", "\r")
@@ -117,3 +101,6 @@ class emtEmail:
         return emt_values
 
         #print(emt_values)
+
+if __name__ == "__main__":
+    print(emtEmail.get_email_data())
