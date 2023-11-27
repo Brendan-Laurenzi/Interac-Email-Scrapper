@@ -20,19 +20,30 @@ class MainWindow(QMainWindow):
 
         # VARIABLES
         self.menuStatus = True
+        self.selectedMenu = self.ui.homeBtn
 
-        # INITIALIZE TABLE DATA
+        # INITIALIZE DATA
         self.loadData()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.homePage)
+        self.ui.tableSearchMenuContainer.hide()
 
-        # BUTTON CONNECTORS
+        ## BUTTON CONNECTORS
+
         self.ui.menuBtn.clicked.connect(self.menuToggle)
         self.ui.updateButton.clicked.connect(self.loadData)
+        # Side Menu Buttons
+        self.ui.homeBtn.clicked.connect(lambda:self.showPage(self.ui.homePage))
+        self.ui.dataBtn.clicked.connect(lambda:self.showPage(self.ui.dataPage))
+        self.ui.reportBtn.clicked.connect(lambda:self.showPage(self.ui.reportPage))
+        self.ui.settingsBtn.clicked.connect(lambda:self.showPage(self.ui.settingPage))
+        self.ui.infoBtn.clicked.connect(lambda:self.showPage(self.ui.infoPage))
+        self.ui.helpBtn.clicked.connect(lambda:self.showPage(self.ui.helpPage))
+        
 
     ## UI FUNCTIONS
 
     def menuToggle(self):
         if (self.menuStatus):
-            print("Max")
             self.menuStatus = False
             self.ui.homeBtn.setText("")
             self.ui.dataBtn.setText("")
@@ -41,7 +52,6 @@ class MainWindow(QMainWindow):
             self.ui.infoBtn.setText("")
             self.ui.helpBtn.setText("")
         else:
-            print("Min")
             self.menuStatus = True
             self.ui.homeBtn.setText("Home")
             self.ui.dataBtn.setText("Data Analysis")
@@ -50,9 +60,16 @@ class MainWindow(QMainWindow):
             self.ui.infoBtn.setText("Information")
             self.ui.helpBtn.setText("Help")
 
+    def showPage(self, page):
+        self.ui.stackedWidget.setCurrentWidget(page)
+        self.selectedMenu.setStyleSheet('')
+        self.sender().setStyleSheet('background-color: #1f232a;')
+        self.selectedMenu = self.sender()
+
     def loadData(self):
         dataList = db.Database.get_all_emt_data()
         self.ui.tableWidget.setRowCount(len(dataList))
+
         for row, data in enumerate(dataList):
             # Row Data ex. : ['2104673 ONTARIO INC', '2,500', 'N/A', datetime.datetime(2023, 10, 24, 17, 7), 'CAHfMDyz']
             self.ui.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(data[0])) 
