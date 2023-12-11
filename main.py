@@ -1,9 +1,7 @@
 # IMPORT DEPENDICIES
 import sys
-import time
-from PyQt6 import QtGui
-from PyQt6.QtCore import QRunnable, QThreadPool, pyqtSignal, QObject, QSettings
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtCore import QThreadPool, QSettings
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QMessageBox
 
 # IMPORT GUI FILE
 from ui_interface import *
@@ -11,8 +9,7 @@ from ui_interface import *
 # IMPORT DATABASE 
 import database
 
-# IMPORT SCRAPPER
-import scrape
+from threadworkers import TimeWorker, UpdateWorker, ListenWorker
 
 
 db = database.Database()
@@ -30,68 +27,6 @@ doneBtnStyleSheet = (
     """
 )
 
-class WorkerSignals(QObject):
-    progress = pyqtSignal(int, int)
-    finished = pyqtSignal(int)
-    error = pyqtSignal(tuple)
-    result = pyqtSignal(int)
-    interrupt = pyqtSignal()
-
-class UpdateWorker(QRunnable):
-
-    def __init__(self, condition=None):
-        super(UpdateWorker, self).__init__()
-        self.condition = condition
-        self.email = scrape.emtEmail()
-        self.signals = WorkerSignals()
-
-    def run(self):
-        db.connect()
-        self.email.connect()
-        beforeEntryCount = len(db.fetch_all('received_emts'))
-
-        emailCount = self.email.get_email_count(self.condition)
-        for i in range(emailCount):
-            # Retreive ['name', 'amt', 'memo', 'date', 'refID'] from Interac Confirmation Email
-            emailData = self.email.fetch_email_content(i)
-            #print(emailData)
-            self.signals.progress.emit(i+1, emailCount)
-            # Continue to next email if -1 (Email did not match Interac E-Transfer Format)
-            if (emailData == -1): continue
-            db.insert_record("received_emts", ['name', 'amt', 'memo', 'date', 'refID'], emailData)
-
-        # Calculate how many new entries were added
-        afterEntryCount = len(db.fetch_all('received_emts'))
-        newEntryCount = afterEntryCount - beforeEntryCount
-
-        self.email.disconnect()
-        db.disconnect()
-        self.signals.finished.emit(newEntryCount)
-
-
-class ListenWorker(QRunnable):
-
-    def __init__(self):
-        super(ListenWorker, self).__init__()
-        self.shouldStop = False
-        self.email = scrape.emtEmail()
-        self.signals = WorkerSignals()
-
-    def stop(self):
-        self.shouldStop = True
-
-    def run(self):
-        self.email.connect()
-        while not self.shouldStop:
-            result = self.email.check_for_new_emails()
-            if self.shouldStop or result == -1: break
-            self.signals.result.emit(result)
-        self.email.disconnect()
-        print("Listen Thread Complete")
-
-
-
-
 ## MAIN WINDOW CLASS
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -99,17 +34,25 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # VARIABLES
+        ## VARIABLES
         self.menuStatus = True
         self.selectedMenu = self.ui.homeBtn
         self.isSearching = False
-        self.idleTriggerMail = scrape.emtEmail()
 
-        # INITIALIZE UI
+        ## TIME WORKER THREAD
+        self.timeWorker = TimeWorker()
+        self.timeWorker.signals.result.connect(self.handle_time_update)
+        threadpool.start(self.timeWorker)
+
+        ## INITIALIZE UI
         self.initializeTableData()
         self.ui.stackedWidget.setCurrentWidget(self.ui.homePage)
         self.ui.newDataTable.horizontalHeader().setVisible(True)
         self.ui.allDataTable.horizontalHeader().setVisible(True)
+
+        #TEMPORARY AS FEATURES INCOMPLETE
+        self.ui.infoBtn.setVisible(False)
+        self.ui.helpBtn.setVisible(False)
 
         # INITIALIZE SETTINGS
         self.settings = QSettings('EMTManager', 'App1')
@@ -120,7 +63,6 @@ class MainWindow(QMainWindow):
             pass
 
         ## BUTTON CONNECTORS
-
         self.ui.menuBtn.clicked.connect(self.menuToggle)
         # SideMenu Buttons
         self.ui.homeBtn.clicked.connect(lambda:self.showPage(self.ui.homePage))
@@ -130,18 +72,18 @@ class MainWindow(QMainWindow):
         self.ui.infoBtn.clicked.connect(lambda:self.showPage(self.ui.infoPage))
         self.ui.helpBtn.clicked.connect(lambda:self.showPage(self.ui.helpPage))
         # Home Buttons
-        self.ui.homeUpdateBtn.clicked.connect(self.updateDatabase)
+        self.ui.dataUpdateBtn.clicked.connect(self.confirm_manual_update)
         self.ui.autoUpdateCheckBox.toggled.connect(self.toggle_auto_update)
         self.ui.searchAllTableBtn.clicked.connect(lambda:self.search_table(self.ui.searchAllTableLine.text(), self.ui.allDataTable))
 
 
 
     ## WORKER SIGNAL FUNCTIONS
-    def reportProgress(self, curValue, maxValue):
+    def handle_progress_update(self, curValue, maxValue):
         self.ui.receivedEMTprogressBar.setMaximum(maxValue)
         self.ui.receivedEMTprogressBar.setValue(curValue)
 
-    def updateComplete(self, count):
+    def handle_update_complete(self, count):
         if count > 0:
             self.ui.updateStatusLabel.setText(f"Successfully added ({count}) new entries!")
         else:
@@ -150,14 +92,15 @@ class MainWindow(QMainWindow):
         self.initializeTableData()
         self.isSearching = False
 
-
     def handle_new_email(self, result):
         if result == 1:
-            #print("Email Event")
+            print("Email Activity Detected - Beginning Search")
             self.updateDatabase("UNSEEN")
         else:
             print("Timed out / Error")
 
+    def handle_time_update(self, timeString):
+        self.ui.localTimeLabel.setText(timeString)
 
     ## UI FUNCTIONS
 
@@ -187,7 +130,6 @@ class MainWindow(QMainWindow):
             threadpool.start(self.listenWorker)
         else:
             self.listenWorker.stop()
-            self.idleTriggerMail.break_idle_loop()
 
 
     def showPage(self, page):
@@ -207,8 +149,8 @@ class MainWindow(QMainWindow):
         self.ui.receivedEMTprogressBar.setValue(0)
 
         self.updateWorker = UpdateWorker(condition)
-        self.updateWorker.signals.progress.connect(self.reportProgress)
-        self.updateWorker.signals.finished.connect(self.updateComplete)
+        self.updateWorker.signals.progress.connect(self.handle_progress_update)
+        self.updateWorker.signals.finished.connect(self.handle_update_complete)
         threadpool.start(self.updateWorker)
 
 
@@ -237,6 +179,11 @@ class MainWindow(QMainWindow):
             tableWidgit.setItem(row, 2 + colShift, QtWidgets.QTableWidgetItem(data[2])) 
             tableWidgit.setItem(row, 3 + colShift, QtWidgets.QTableWidgetItem(str(data[3]))) 
             tableWidgit.setItem(row, 4 + colShift, QtWidgets.QTableWidgetItem(data[4]))
+
+        # Since Last Column is expanding, resize all but last column
+        # - tableWidgit.resizeColumnsToContent() resizes last column causing a UI visual bug
+        for column in range(tableWidgit.columnCount() - 1):
+            tableWidgit.resizeColumnToContents(column)
 
 
     def initializeTableData(self):
@@ -267,13 +214,34 @@ class MainWindow(QMainWindow):
             self.ui.newDataTable.removeRow(row)
 
 
+    # PopUp called when 'Manual Update' Button clicked
+    def confirm_manual_update(self):
+        msg = QMessageBox(self)
+        msg.setStyleSheet("QWidget{background-color: #272c30;} QPushButton{padding:4px; border: 1px solid white} QPushButton:hover{background-color: rgb(0, 127, 191);}")
+        msg.setWindowTitle("Notice")
+        msg.setText("This will search the entire mailbox!")
+        msg.setInformativeText("(This may take awhile depending on the amount of emails)")
+        msg.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+        msg.setDefaultButton(QMessageBox.StandardButton.Cancel)
+
+        x = msg.exec()
+
+        if x == QMessageBox.StandardButton.Ok:
+            self.updateDatabase()
+
+
+    # Function to be called when program exiting
     def closeEvent(self, event):
         # Stop Email Listening Thread if Active
         if self.ui.autoUpdateCheckBox.isChecked(): 
-            self.ui.autoUpdateCheckBox.toggle()
+            self.listenWorker.stop()
+
+        # Stop Time Worker Thread
+        self.timeWorker.stop()
 
         threadpool.clear()
 
+        # Set settings to current values
         self.settings.setValue('window size', self.size())
         self.settings.setValue('window position', self.pos())
 

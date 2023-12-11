@@ -1,8 +1,6 @@
 import imaplib2
 import email
 import calendar
-from email.header import decode_header
-from datetime import datetime, timedelta
 
 def find_string(text, searchcase, endcase):
     index = text.find(searchcase)
@@ -143,6 +141,7 @@ class emtEmail:
             self.mail.select(self.mailBox)
             # Idle for 5 seconds listening for new event in selected Inbox
             self.mail.idle()
+            self.mail._end_idle()
             # Check wether the response was an event or a timeout
             response = self.mail.response('IDLE')
             if response[1] == [None]:
@@ -155,20 +154,11 @@ class emtEmail:
             return -1
             
 
-    def break_idle_loop(self):
+    def stop_email_idle(self):
         try:
-            self.connect()
-
-            self.get_email_count()
-            self.mail.store(self.emailIDList[0], '-FLAGS', '(\Seen)')
-            self.mail.store(self.emailIDList[0], '+FLAGS', '(\Seen)')
-
-            self.disconnect()
-                    
+            self.mail._end_idle()
         except imaplib2.IMAP4.error as e:
             print("Email Error:", e)
-
-
 
 
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>921</width>
+    <width>988</width>
     <height>837</height>
    </rect>
   </property>
@@ -23,32 +23,104 @@
 }
 
 #centralwidget{
-	background-color: #1f232a;
+	background-color: #353c42;
 }
 
-
-#receivedEMTprogressBarContainer QLabel[class=&quot;updateInProgress&quot;] {
-	color: rgb(227, 227, 227);
-	font: italic;
+#mainHeaderEmailLabelFrame{
+	background-color: #353c42;
+	border-radius: 5px;
 }
-
-#receivedEMTprogressBarContainer QLabel[class=&quot;updateComplete1&quot;] {
-	color: rgb(0, 208, 24);
-}
-
-#receivedEMTprogressBarContainer QLabel[class=&quot;updateComplete2&quot;] {
-	color: rgb(227, 227, 227);
-}
-
-#receivedEMTprogressBarContainer QLabel[class=&quot;updateError&quot;] {
-	background-color: lightblue;
-}
-
 /* ---------------------------- */
-/* LEFT  MENU */
 
+/* BUTTON BACKGROUND */
+/* ---------------------------- */
+#markAllDoneBtn,
+#searchAllTableLine,
+#showAllEntriesBtn,
+#dataUpdateBtn,
+#autoUpdateCheckBox{
+	background-color: #353c42;
+	padding: 4px;
+	border-radius: 5px;
+}
+/* ---------------------------- */
+
+
+/* BUTTON HOVER - STYLE 1 */
+/* ---------------------------- */
+#markAllDoneBtn:hover,
+#searchAllTableBtn:hover,
+#showAllEntriesBtn:hover,
+#dataUpdateBtn:hover,
+#autoUpdateCheckBox:hover,
+QTabBar::tab:!selected:hover,
+#reportDateBtnContainer QPushButton:hover{
+	background-color: rgb(0, 127, 191);
+	border-radius: 5px;
+}
+/* ---------------------------- */
+
+/* QTAB */
+/* ---------------------------- */
+QTabBar::tab{
+	height: 32px;
+	border-bottom: none;
+	margin-left: 5px;
+	padding: 4px;
+}
+QTabBar::tab:selected{
+	border-bottom: 2px solid rgb(6, 106, 255);
+}
+QTabWidget::pane { 
+	border: 0; 
+}
+/* ---------------------------- */
+
+
+/* QTABLE */
+/* ---------------------------- */
+QTableWidget{
+	gridline-color: #353c42;
+	background-color: #272c30;
+	font-size: 8pt;
+}
+QTableWidget::item{
+	padding: 4px;
+	background-color: #2f3e3b;
+}
+
+QTableView::item:alternate{
+	padding: 4px;
+	background-color: #2a3732;
+}
+QHeaderView::section {
+    background-color: #272c30;
+    padding: 4px;
+    font-size: 10pt;
+	font-weight: bold;
+    border-style: none;
+    border-bottom: 1px solid #353c42;
+    border-right: 1px solid #353c42;
+}
+QHeaderView::section:first {
+	border-right: 1px solid #353c42;
+	border-left: 1px solid #353c42;
+}
+QHeaderView::section:horizontal{
+    border-top: 1px solid #353c42;
+}
+QHeaderView::section:vertical{
+    border-left: 1px solid #353c42;
+}
+/* ---------------------------- */
+
+
+
+/* LEFT  MENU */
+/* ---------------------------- */
+#mainBodyHeader,
 #leftMenuSubContainer{
-	background-color: #16191d;
+	background-color: #272c30;
 }
 
 #leftMenuSubContainer QPushButton{
@@ -63,75 +135,15 @@
 }
 
 /* ---------------------------- */
-/* BUTTON HOVER - STYLE 1 */
-
-#homeTableSearchContainer QPushButton:hover,
-#homeTableContainer QTabBar::tab:!selected:hover,
-#toggleTableSearchBtnContainer QPushButton:hover,
-#reportDateBtnContainer QPushButton:hover{
-	background-color: rgb(0, 127, 191);
-	border-radius: 5px;
-}
-
-/* ---------------------------- */
 /* HOME PAGE */
 
-#homeTableSearchContainer{
-	background-color: rgb(255, 255, 255);
-	border-radius: 5px;
-}
 
-#searchContainerBackground{
-	background-color: #16191d;
-	border-radius: 5px;
-}
 
-#homeHeaderContainer{
-	background-color: #16191d;
-	border-bottom-left-radius: 15px;
+/* DATA PAGE*/
+#dataPageContainer{
+	background-color: #272c30;
+	border-radius: 15px;
 }
-
-#homeTableMenuContainer{
-	background-color: #16191d;
-	border-top-left-radius: 15px;
-}
-
-#newTableSearchContainer,
-#allTableSearchContainer,
-#homeTableContainer{
-	background-color: #16191d;
-}
-
-#homeTableContainer QTableCornerButton::section {
-    background:  #16191d;
-    border: none;
-}
-
-#homeTableContainer QHeaderView::section {
-    background-color: #16191d;
-    border: none;
-    height: 32px;
-}
-
-#homeTableContainer QTabBar::tab{
-	height: 32px;
-	border-bottom: none;
-	margin-left: 5px;
-	padding: 4px;
-}
-
-#homeTableContainer QTabBar::tab:selected{
-	border-bottom: 2px solid rgb(6, 106, 255);
-}
-
-#homeTableContainer QTabWidget::pane { 
-	border: 0; 
-}
-
-#toggleTableSearchBtnContainer QPushButton{
-	padding: 4px;
-}
-
 
 /* REPORT PAGE CSS*/
 
@@ -291,7 +303,7 @@
                 <string>Home</string>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: #1f232a;</string>
+                <string notr="true">background-color: #353c42;</string>
                </property>
                <property name="text">
                 <string>Home</string>
@@ -317,7 +329,7 @@
                 <string>Data Analysis</string>
                </property>
                <property name="text">
-                <string>Data Analysis</string>
+                <string>EMT Data</string>
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
@@ -497,9 +509,206 @@
         <number>0</number>
        </property>
        <item>
+        <widget class="QWidget" name="mainBodyHeader" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_63">
+          <property name="spacing">
+           <number>25</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_18">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>519</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_22" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_71">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_16">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_70">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>Email:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="mainHeaderEmailLabelFrame">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_72">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>5</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>5</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="mainHeaderEmailLabel">
+                  <property name="text">
+                   <string>prolittle101@hotmail.com</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_21" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_74">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_30">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_73">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="localTimeLabel">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>3:43 PM</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="homePage">
           <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -518,12 +727,13 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="dataPage">
+          <layout class="QHBoxLayout" name="horizontalLayout_51">
            <item>
-            <widget class="QWidget" name="homeHeaderContainer" native="true">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_36">
+            <widget class="QWidget" name="dataPageContainer" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_32">
               <property name="spacing">
                <number>0</number>
               </property>
@@ -537,895 +747,896 @@
                <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>0</number>
+               <number>10</number>
               </property>
               <item>
-               <widget class="QFrame" name="homeHeaderLabelFrame">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+               <widget class="QWidget" name="dataHeaderContainer" native="true">
+                <property name="styleSheet">
+                 <string notr="true"/>
                 </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
+                <layout class="QHBoxLayout" name="horizontalLayout_62">
+                 <item>
+                  <widget class="QFrame" name="dataHeaderLabelFrame">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_68">
+                    <item>
+                     <widget class="QLabel" name="dataHeaderLabel">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>EMT Confirmations (showing up to 100 confirmations)</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="showAllBtnFrame">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_69">
+                    <item alignment="Qt::AlignLeft">
+                     <widget class="QPushButton" name="showAllEntriesBtn">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>Show All</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_20">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="dataPageHeaderSeperator">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>1</height>
+                 </size>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_37">
+                <property name="styleSheet">
+                 <string notr="true">background-color: #353c42;</string>
+                </property>
+                <property name="lineWidth">
+                 <number>1</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="dataTableMenuContainer" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_64">
                  <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>15</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>6</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
                   <number>10</number>
                  </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
-                  <widget class="QLabel" name="homeHeaderLabel">
-                   <property name="font">
-                    <font>
-                     <pointsize>18</pointsize>
-                    </font>
+                  <widget class="QWidget" name="checkBoxContainer" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_30">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>9</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item alignment="Qt::AlignTop">
+                     <widget class="QCheckBox" name="autoUpdateCheckBox">
+                      <property name="font">
+                       <font>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Auto Update</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                     <widget class="QLabel" name="recommendedLabel">
+                      <property name="font">
+                       <font>
+                        <pointsize>7</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>(Recommended)</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="dataUpdateBtnContainer">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
-                   <property name="text">
-                    <string>Home</string>
+                   <property name="styleSheet">
+                    <string notr="true"/>
                    </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_65">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item alignment="Qt::AlignTop">
+                     <widget class="QPushButton" name="dataUpdateBtn">
+                      <property name="font">
+                       <font>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Manual Update</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_19">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>316</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="receivedEMTprogressBarContainer" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_31">
+                    <property name="leftMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>5</number>
+                    </property>
+                    <item>
+                     <widget class="QProgressBar" name="receivedEMTprogressBar">
+                      <property name="styleSheet">
+                       <string notr="true">background-color: #353c42;</string>
+                      </property>
+                      <property name="value">
+                       <number>0</number>
+                      </property>
+                      <property name="invertedAppearance">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignHCenter">
+                     <widget class="QLabel" name="updateStatusLabel">
+                      <property name="font">
+                       <font>
+                        <pointsize>8</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Press 'Update' to scan for new EMTs</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_7">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="homeUpdateContainer" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_12">
-              <item>
-               <spacer name="horizontalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>521</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="homeTableMenuContainer" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <item>
-               <widget class="QFrame" name="homeUpdateBtnContainer">
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
+               <widget class="QWidget" name="dataTableContainer" native="true">
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(6, 106, 255);
-border-radius: 5px;</string>
+                 <string notr="true"/>
                 </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_40">
+                <layout class="QHBoxLayout" name="horizontalLayout_52">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
-                  <widget class="QPushButton" name="homeUpdateBtn">
+                  <widget class="QTabWidget" name="dataTableTab">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="font">
                     <font>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
-                   <property name="text">
-                    <string>Update</string>
+                   <property name="cursor">
+                    <cursorShape>ArrowCursor</cursorShape>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="checkBoxContainer" native="true">
-                <layout class="QHBoxLayout" name="horizontalLayout_5">
-                 <item>
-                  <widget class="QCheckBox" name="autoUpdateCheckBox">
-                   <property name="text">
-                    <string>Auto Update</string>
+                   <property name="focusPolicy">
+                    <enum>Qt::TabFocus</enum>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_12" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_11">
-                 <item>
-                  <widget class="QLabel" name="label_10">
-                   <property name="font">
-                    <font>
-                     <pointsize>7</pointsize>
-                     <italic>false</italic>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(227, 227, 227);</string>
-                   </property>
-                   <property name="text">
-                    <string>Current Email:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="currentEmailLabel">
-                   <property name="font">
-                    <font>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Brendanmiss@hotmail.com</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="receivedEMTprogressBarContainer" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_6">
-                 <property name="leftMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>5</number>
-                 </property>
-                 <item>
-                  <widget class="QProgressBar" name="receivedEMTprogressBar">
-                   <property name="value">
-                    <number>0</number>
-                   </property>
-                   <property name="invertedAppearance">
+                   <property name="autoFillBackground">
                     <bool>false</bool>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="tabShape">
+                    <enum>QTabWidget::Rounded</enum>
+                   </property>
+                   <property name="currentIndex">
+                    <number>1</number>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                   <widget class="QWidget" name="allDataTableContainer">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <attribute name="icon">
+                     <iconset resource="resources.qrc">
+                      <normaloff>:/icons_light/icons_light/table.svg</normaloff>
+                      <normalon>:/icons_blue/icons_blue/table.svg</normalon>:/icons_light/icons_light/table.svg</iconset>
+                    </attribute>
+                    <attribute name="title">
+                     <string>All EMTs</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_26">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QWidget" name="allTableSearchContainer" native="true">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_53">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>4</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>3</number>
+                        </property>
+                        <item>
+                         <widget class="QWidget" name="searchLabelFrame" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>20</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_27">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="searchLabel">
+                             <property name="text">
+                              <string>Search:</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignLeft">
+                         <widget class="QWidget" name="dataTableSearchContainer" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>250</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_54">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>1</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="searchContainerBackground">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>32</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_55">
+                              <property name="spacing">
+                               <number>2</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>5</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>4</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="frame_21">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_56">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLineEdit" name="searchAllTableLine">
+                                   <property name="cursor">
+                                    <cursorShape>IBeamCursor</cursorShape>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true"/>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="frame_22">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_57">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QPushButton" name="searchAllTableBtn">
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">padding: 2px;</string>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="resources.qrc">
+                                     <normaloff>:/icons_light/icons_light/search.svg</normaloff>:/icons_light/icons_light/search.svg</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>20</width>
+                                     <height>20</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_15">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="allDataTable">
+                       <property name="font">
+                        <font>
+                         <pointsize>8</pointsize>
+                        </font>
+                       </property>
+                       <property name="autoFillBackground">
+                        <bool>false</bool>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="lineWidth">
+                        <number>1</number>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
+                       </property>
+                       <attribute name="horizontalHeaderVisible">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderCascadingSectionResizes">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderDefaultSectionSize">
+                        <number>150</number>
+                       </attribute>
+                       <attribute name="horizontalHeaderHighlightSections">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderVisible">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                        <bool>true</bool>
+                       </attribute>
+                       <row>
+                        <property name="text">
+                         <string>1</string>
+                        </property>
+                       </row>
+                       <row>
+                        <property name="text">
+                         <string>2</string>
+                        </property>
+                       </row>
+                       <column>
+                        <property name="text">
+                         <string>Name</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Amount</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Memo</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Date</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Ref_ID</string>
+                        </property>
+                       </column>
+                       <item row="0" column="0">
+                        <property name="text">
+                         <string>John</string>
+                        </property>
+                       </item>
+                       <item row="0" column="1">
+                        <property name="text">
+                         <string>100.00</string>
+                        </property>
+                       </item>
+                       <item row="0" column="2">
+                        <property name="text">
+                         <string>Memo</string>
+                        </property>
+                       </item>
+                       <item row="0" column="3">
+                        <property name="text">
+                         <string>Today</string>
+                        </property>
+                       </item>
+                       <item row="0" column="4">
+                        <property name="text">
+                         <string>1234</string>
+                        </property>
+                       </item>
+                       <item row="1" column="0">
+                        <property name="text">
+                         <string>Laf</string>
+                        </property>
+                       </item>
+                       <item row="1" column="1">
+                        <property name="text">
+                         <string>2.00</string>
+                        </property>
+                       </item>
+                       <item row="1" column="2">
+                        <property name="text">
+                         <string>Custer</string>
+                        </property>
+                       </item>
+                       <item row="1" column="3">
+                        <property name="text">
+                         <string>Today</string>
+                        </property>
+                       </item>
+                       <item row="1" column="4">
+                        <property name="text">
+                         <string>2345</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="newDataTableContainer">
+                    <attribute name="icon">
+                     <iconset resource="resources.qrc">
+                      <normaloff>:/icons_light/icons_light/table.svg</normaloff>
+                      <normalon>:/icons_blue/icons_blue/table.svg</normalon>:/icons_light/icons_light/table.svg</iconset>
+                    </attribute>
+                    <attribute name="title">
+                     <string>New EMTs</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_28">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QWidget" name="newTableSearchContainer" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_58">
+                        <property name="spacing">
+                         <number>1</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>10</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>10</number>
+                        </property>
+                        <item>
+                         <widget class="QPushButton" name="markAllDoneBtn">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>21</height>
+                           </size>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="text">
+                           <string>Mark All Done</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_16">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="newDataTable">
+                       <property name="font">
+                        <font>
+                         <pointsize>8</pointsize>
+                        </font>
+                       </property>
+                       <property name="autoFillBackground">
+                        <bool>false</bool>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">
+</string>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
+                       </property>
+                       <attribute name="horizontalHeaderVisible">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderCascadingSectionResizes">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderDefaultSectionSize">
+                        <number>150</number>
+                       </attribute>
+                       <attribute name="horizontalHeaderHighlightSections">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderVisible">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                        <bool>true</bool>
+                       </attribute>
+                       <column>
+                        <property name="text">
+                         <string>Action</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Name</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Amount</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Memo</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Date</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Ref_ID</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
                   </widget>
                  </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="updateStatusLabel">
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="dataFooterContainer" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_67">
+                 <property name="leftMargin">
+                  <number>18</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="dataFooterLabel">
                    <property name="font">
                     <font>
                      <pointsize>8</pointsize>
                     </font>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
                    <property name="text">
-                    <string>Press 'Update' to scan for new EMTs</string>
+                    <string>Showing 2 of 59 entries</string>
                    </property>
                   </widget>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>316</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="homeTableContainer" native="true">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_13">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QTabWidget" name="homeTableTab">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
-                <property name="cursor">
-                 <cursorShape>ArrowCursor</cursorShape>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::TabFocus</enum>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="tabShape">
-                 <enum>QTabWidget::Rounded</enum>
-                </property>
-                <property name="currentIndex">
-                 <number>0</number>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>24</width>
-                  <height>24</height>
-                 </size>
-                </property>
-                <widget class="QWidget" name="allDataTableContainer">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <attribute name="icon">
-                  <iconset resource="resources.qrc">
-                   <normaloff>:/icons_light/icons_light/table.svg</normaloff>
-                   <normalon>:/icons_blue/icons_blue/table.svg</normalon>:/icons_light/icons_light/table.svg</iconset>
-                 </attribute>
-                 <attribute name="title">
-                  <string>All EMTs</string>
-                 </attribute>
-                 <layout class="QVBoxLayout" name="verticalLayout_8">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QWidget" name="allTableSearchContainer" native="true">
-                    <layout class="QHBoxLayout" name="horizontalLayout_11">
-                     <property name="spacing">
-                      <number>1</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>5</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>4</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>3</number>
-                     </property>
-                     <item>
-                      <widget class="QWidget" name="widget_10" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_9">
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item>
-                         <widget class="Line" name="line_2">
-                          <property name="cursor">
-                           <cursorShape>ArrowCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(6, 106, 255);</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>2</number>
-                          </property>
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignLeft">
-                      <widget class="QWidget" name="homeTableSearchContainer" native="true">
-                       <property name="minimumSize">
-                        <size>
-                         <width>250</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_10">
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
-                        <item>
-                         <widget class="QFrame" name="searchContainerBackground">
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_9">
-                           <property name="spacing">
-                            <number>0</number>
-                           </property>
-                           <property name="leftMargin">
-                            <number>4</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>4</number>
-                           </property>
-                           <property name="rightMargin">
-                            <number>5</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>4</number>
-                           </property>
-                           <item>
-                            <widget class="QFrame" name="frame_17">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_7">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
-                              <property name="leftMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
-                              <item>
-                               <widget class="QLineEdit" name="searchAllTableLine">
-                                <property name="styleSheet">
-                                 <string notr="true">background-color: #16191d;</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="frame_18">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_8">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
-                              <property name="leftMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
-                              <item>
-                               <widget class="QPushButton" name="searchAllTableBtn">
-                                <property name="cursor">
-                                 <cursorShape>PointingHandCursor</cursorShape>
-                                </property>
-                                <property name="text">
-                                 <string/>
-                                </property>
-                                <property name="icon">
-                                 <iconset resource="resources.qrc">
-                                  <normaloff>:/icons_light/icons_light/search.svg</normaloff>:/icons_light/icons_light/search.svg</iconset>
-                                </property>
-                                <property name="iconSize">
-                                 <size>
-                                  <width>20</width>
-                                  <height>20</height>
-                                 </size>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_2">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTableWidget" name="allDataTable">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="autoFillBackground">
-                     <bool>false</bool>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: #2c313c;
-border-left: 2px solid rgb(22, 25, 29);
-</string>
-                    </property>
-                    <property name="editTriggers">
-                     <set>QAbstractItemView::NoEditTriggers</set>
-                    </property>
-                    <property name="alternatingRowColors">
-                     <bool>false</bool>
-                    </property>
-                    <attribute name="horizontalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderCascadingSectionResizes">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderDefaultSectionSize">
-                     <number>150</number>
-                    </attribute>
-                    <attribute name="horizontalHeaderHighlightSections">
-                     <bool>true</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderStretchLastSection">
-                     <bool>true</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-                     <bool>true</bool>
-                    </attribute>
-                    <row>
-                     <property name="text">
-                      <string>1</string>
-                     </property>
-                    </row>
-                    <row>
-                     <property name="text">
-                      <string>2</string>
-                     </property>
-                    </row>
-                    <column>
-                     <property name="text">
-                      <string>Name</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Amount</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Memo</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Date</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Ref_ID</string>
-                     </property>
-                    </column>
-                    <item row="0" column="0">
-                     <property name="text">
-                      <string>John</string>
-                     </property>
-                    </item>
-                    <item row="0" column="1">
-                     <property name="text">
-                      <string>100.00</string>
-                     </property>
-                    </item>
-                    <item row="0" column="2">
-                     <property name="text">
-                      <string>Memo</string>
-                     </property>
-                    </item>
-                    <item row="0" column="3">
-                     <property name="text">
-                      <string>Today</string>
-                     </property>
-                    </item>
-                    <item row="0" column="4">
-                     <property name="text">
-                      <string>1234</string>
-                     </property>
-                    </item>
-                    <item row="1" column="0">
-                     <property name="text">
-                      <string>Laf</string>
-                     </property>
-                    </item>
-                    <item row="1" column="1">
-                     <property name="text">
-                      <string>2.00</string>
-                     </property>
-                    </item>
-                    <item row="1" column="2">
-                     <property name="text">
-                      <string>Custer</string>
-                     </property>
-                    </item>
-                    <item row="1" column="3">
-                     <property name="text">
-                      <string>Today</string>
-                     </property>
-                    </item>
-                    <item row="1" column="4">
-                     <property name="text">
-                      <string>2345</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-                <widget class="QWidget" name="newDataTableContainer">
-                 <attribute name="icon">
-                  <iconset resource="resources.qrc">
-                   <normaloff>:/icons_light/icons_light/table.svg</normaloff>
-                   <normalon>:/icons_blue/icons_blue/table.svg</normalon>:/icons_light/icons_light/table.svg</iconset>
-                 </attribute>
-                 <attribute name="title">
-                  <string>New EMTs</string>
-                 </attribute>
-                 <layout class="QVBoxLayout" name="verticalLayout_18">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QWidget" name="newTableSearchContainer" native="true">
-                    <layout class="QHBoxLayout" name="horizontalLayout_14">
-                     <property name="spacing">
-                      <number>1</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>5</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>4</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>4</number>
-                     </property>
-                     <item>
-                      <widget class="QWidget" name="widget_16" native="true">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 5px;</string>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_4">
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
-                        <item>
-                         <widget class="QFrame" name="frame_23">
-                          <property name="enabled">
-                           <bool>true</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: #16191d;</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_10">
-                           <property name="spacing">
-                            <number>0</number>
-                           </property>
-                           <property name="leftMargin">
-                            <number>4</number>
-                           </property>
-                           <property name="topMargin">
-                            <number>4</number>
-                           </property>
-                           <property name="rightMargin">
-                            <number>5</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>4</number>
-                           </property>
-                           <item>
-                            <widget class="QFrame" name="frame_24">
-                             <property name="frameShape">
-                              <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Raised</enum>
-                             </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_45">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
-                              <property name="leftMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
-                              <item>
-                               <widget class="QPushButton" name="pushButton_8">
-                                <property name="font">
-                                 <font>
-                                  <pointsize>12</pointsize>
-                                 </font>
-                                </property>
-                                <property name="text">
-                                 <string>All Done</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_9">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QTableWidget" name="newDataTable">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="autoFillBackground">
-                     <bool>false</bool>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">background-color: #2c313c;
-border-left: 2px solid rgb(22, 25, 29);
-</string>
-                    </property>
-                    <property name="editTriggers">
-                     <set>QAbstractItemView::NoEditTriggers</set>
-                    </property>
-                    <property name="alternatingRowColors">
-                     <bool>false</bool>
-                    </property>
-                    <attribute name="horizontalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderCascadingSectionResizes">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderDefaultSectionSize">
-                     <number>150</number>
-                    </attribute>
-                    <attribute name="horizontalHeaderHighlightSections">
-                     <bool>true</bool>
-                    </attribute>
-                    <attribute name="horizontalHeaderStretchLastSection">
-                     <bool>true</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-                     <bool>true</bool>
-                    </attribute>
-                    <column>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Name</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Amount</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Memo</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Date</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Ref_ID</string>
-                     </property>
-                    </column>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
                </widget>
               </item>
              </layout>
             </widget>
            </item>
           </layout>
-          <zorder>homeTableMenuContainer</zorder>
-          <zorder>homeHeaderContainer</zorder>
-          <zorder>homeUpdateContainer</zorder>
-          <zorder>homeTableContainer</zorder>
          </widget>
-         <widget class="QWidget" name="dataPage"/>
          <widget class="QWidget" name="reportPage">
           <property name="styleSheet">
            <string notr="true"/>
@@ -2264,6 +2475,19 @@ border-left: 2px solid rgb(22, 25, 29);
            </property>
            <property name="text">
             <string>CheckBox</string>
+           </property>
+          </widget>
+          <widget class="QLCDNumber" name="lcdNumber">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>560</y>
+             <width>64</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="value" stdset="0">
+            <double>10.230000000000000</double>
            </property>
           </widget>
          </widget>

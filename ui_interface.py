@@ -12,7 +12,7 @@ import resources_re
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(921, 837)
+        MainWindow.resize(988, 837)
         MainWindow.setStyleSheet("*{\n"
 "    border: none;\n"
 "    background: none;\n"
@@ -22,32 +22,104 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#centralwidget{\n"
-"    background-color: #1f232a;\n"
+"    background-color: #353c42;\n"
 "}\n"
 "\n"
-"\n"
-"#receivedEMTprogressBarContainer QLabel[class=\"updateInProgress\"] {\n"
-"    color: rgb(227, 227, 227);\n"
-"    font: italic;\n"
+"#mainHeaderEmailLabelFrame{\n"
+"    background-color: #353c42;\n"
+"    border-radius: 5px;\n"
 "}\n"
-"\n"
-"#receivedEMTprogressBarContainer QLabel[class=\"updateComplete1\"] {\n"
-"    color: rgb(0, 208, 24);\n"
-"}\n"
-"\n"
-"#receivedEMTprogressBarContainer QLabel[class=\"updateComplete2\"] {\n"
-"    color: rgb(227, 227, 227);\n"
-"}\n"
-"\n"
-"#receivedEMTprogressBarContainer QLabel[class=\"updateError\"] {\n"
-"    background-color: lightblue;\n"
-"}\n"
-"\n"
 "/* ---------------------------- */\n"
-"/* LEFT  MENU */\n"
 "\n"
+"/* BUTTON BACKGROUND */\n"
+"/* ---------------------------- */\n"
+"#markAllDoneBtn,\n"
+"#searchAllTableLine,\n"
+"#showAllEntriesBtn,\n"
+"#dataUpdateBtn,\n"
+"#autoUpdateCheckBox{\n"
+"    background-color: #353c42;\n"
+"    padding: 4px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"/* ---------------------------- */\n"
+"\n"
+"\n"
+"/* BUTTON HOVER - STYLE 1 */\n"
+"/* ---------------------------- */\n"
+"#markAllDoneBtn:hover,\n"
+"#searchAllTableBtn:hover,\n"
+"#showAllEntriesBtn:hover,\n"
+"#dataUpdateBtn:hover,\n"
+"#autoUpdateCheckBox:hover,\n"
+"QTabBar::tab:!selected:hover,\n"
+"#reportDateBtnContainer QPushButton:hover{\n"
+"    background-color: rgb(0, 127, 191);\n"
+"    border-radius: 5px;\n"
+"}\n"
+"/* ---------------------------- */\n"
+"\n"
+"/* QTAB */\n"
+"/* ---------------------------- */\n"
+"QTabBar::tab{\n"
+"    height: 32px;\n"
+"    border-bottom: none;\n"
+"    margin-left: 5px;\n"
+"    padding: 4px;\n"
+"}\n"
+"QTabBar::tab:selected{\n"
+"    border-bottom: 2px solid rgb(6, 106, 255);\n"
+"}\n"
+"QTabWidget::pane { \n"
+"    border: 0; \n"
+"}\n"
+"/* ---------------------------- */\n"
+"\n"
+"\n"
+"/* QTABLE */\n"
+"/* ---------------------------- */\n"
+"QTableWidget{\n"
+"    gridline-color: #353c42;\n"
+"    background-color: #272c30;\n"
+"    font-size: 8pt;\n"
+"}\n"
+"QTableWidget::item{\n"
+"    padding: 4px;\n"
+"    background-color: #2f3e3b;\n"
+"}\n"
+"\n"
+"QTableView::item:alternate{\n"
+"    padding: 4px;\n"
+"    background-color: #2a3732;\n"
+"}\n"
+"QHeaderView::section {\n"
+"    background-color: #272c30;\n"
+"    padding: 4px;\n"
+"    font-size: 10pt;\n"
+"    font-weight: bold;\n"
+"    border-style: none;\n"
+"    border-bottom: 1px solid #353c42;\n"
+"    border-right: 1px solid #353c42;\n"
+"}\n"
+"QHeaderView::section:first {\n"
+"    border-right: 1px solid #353c42;\n"
+"    border-left: 1px solid #353c42;\n"
+"}\n"
+"QHeaderView::section:horizontal{\n"
+"    border-top: 1px solid #353c42;\n"
+"}\n"
+"QHeaderView::section:vertical{\n"
+"    border-left: 1px solid #353c42;\n"
+"}\n"
+"/* ---------------------------- */\n"
+"\n"
+"\n"
+"\n"
+"/* LEFT  MENU */\n"
+"/* ---------------------------- */\n"
+"#mainBodyHeader,\n"
 "#leftMenuSubContainer{\n"
-"    background-color: #16191d;\n"
+"    background-color: #272c30;\n"
 "}\n"
 "\n"
 "#leftMenuSubContainer QPushButton{\n"
@@ -62,75 +134,15 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "/* ---------------------------- */\n"
-"/* BUTTON HOVER - STYLE 1 */\n"
-"\n"
-"#homeTableSearchContainer QPushButton:hover,\n"
-"#homeTableContainer QTabBar::tab:!selected:hover,\n"
-"#toggleTableSearchBtnContainer QPushButton:hover,\n"
-"#reportDateBtnContainer QPushButton:hover{\n"
-"    background-color: rgb(0, 127, 191);\n"
-"    border-radius: 5px;\n"
-"}\n"
-"\n"
-"/* ---------------------------- */\n"
 "/* HOME PAGE */\n"
 "\n"
-"#homeTableSearchContainer{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 5px;\n"
-"}\n"
 "\n"
-"#searchContainerBackground{\n"
-"    background-color: #16191d;\n"
-"    border-radius: 5px;\n"
-"}\n"
 "\n"
-"#homeHeaderContainer{\n"
-"    background-color: #16191d;\n"
-"    border-bottom-left-radius: 15px;\n"
+"/* DATA PAGE*/\n"
+"#dataPageContainer{\n"
+"    background-color: #272c30;\n"
+"    border-radius: 15px;\n"
 "}\n"
-"\n"
-"#homeTableMenuContainer{\n"
-"    background-color: #16191d;\n"
-"    border-top-left-radius: 15px;\n"
-"}\n"
-"\n"
-"#newTableSearchContainer,\n"
-"#allTableSearchContainer,\n"
-"#homeTableContainer{\n"
-"    background-color: #16191d;\n"
-"}\n"
-"\n"
-"#homeTableContainer QTableCornerButton::section {\n"
-"    background:  #16191d;\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"#homeTableContainer QHeaderView::section {\n"
-"    background-color: #16191d;\n"
-"    border: none;\n"
-"    height: 32px;\n"
-"}\n"
-"\n"
-"#homeTableContainer QTabBar::tab{\n"
-"    height: 32px;\n"
-"    border-bottom: none;\n"
-"    margin-left: 5px;\n"
-"    padding: 4px;\n"
-"}\n"
-"\n"
-"#homeTableContainer QTabBar::tab:selected{\n"
-"    border-bottom: 2px solid rgb(6, 106, 255);\n"
-"}\n"
-"\n"
-"#homeTableContainer QTabWidget::pane { \n"
-"    border: 0; \n"
-"}\n"
-"\n"
-"#toggleTableSearchBtnContainer QPushButton{\n"
-"    padding: 4px;\n"
-"}\n"
-"\n"
 "\n"
 "/* REPORT PAGE CSS*/\n"
 "\n"
@@ -196,7 +208,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.homeBtn = QtWidgets.QPushButton(parent=self.frame_2)
         self.homeBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.homeBtn.setStyleSheet("background-color: #1f232a;")
+        self.homeBtn.setStyleSheet("background-color: #353c42;")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/icons_light/icons_light/home.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.homeBtn.setIcon(icon1)
@@ -268,6 +280,72 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.mainBodyHeader = QtWidgets.QWidget(parent=self.mainBodyContainer)
+        self.mainBodyHeader.setObjectName("mainBodyHeader")
+        self.horizontalLayout_63 = QtWidgets.QHBoxLayout(self.mainBodyHeader)
+        self.horizontalLayout_63.setContentsMargins(0, 10, 20, 10)
+        self.horizontalLayout_63.setSpacing(25)
+        self.horizontalLayout_63.setObjectName("horizontalLayout_63")
+        spacerItem1 = QtWidgets.QSpacerItem(519, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_63.addItem(spacerItem1)
+        self.widget_22 = QtWidgets.QWidget(parent=self.mainBodyHeader)
+        self.widget_22.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_22.setObjectName("widget_22")
+        self.horizontalLayout_71 = QtWidgets.QHBoxLayout(self.widget_22)
+        self.horizontalLayout_71.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_71.setSpacing(2)
+        self.horizontalLayout_71.setObjectName("horizontalLayout_71")
+        self.frame_16 = QtWidgets.QFrame(parent=self.widget_22)
+        self.frame_16.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.horizontalLayout_70 = QtWidgets.QHBoxLayout(self.frame_16)
+        self.horizontalLayout_70.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_70.setSpacing(0)
+        self.horizontalLayout_70.setObjectName("horizontalLayout_70")
+        self.label_9 = QtWidgets.QLabel(parent=self.frame_16)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_70.addWidget(self.label_9)
+        self.horizontalLayout_71.addWidget(self.frame_16)
+        self.mainHeaderEmailLabelFrame = QtWidgets.QFrame(parent=self.widget_22)
+        self.mainHeaderEmailLabelFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.mainHeaderEmailLabelFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.mainHeaderEmailLabelFrame.setObjectName("mainHeaderEmailLabelFrame")
+        self.horizontalLayout_72 = QtWidgets.QHBoxLayout(self.mainHeaderEmailLabelFrame)
+        self.horizontalLayout_72.setContentsMargins(5, 0, 5, 0)
+        self.horizontalLayout_72.setSpacing(0)
+        self.horizontalLayout_72.setObjectName("horizontalLayout_72")
+        self.mainHeaderEmailLabel = QtWidgets.QLabel(parent=self.mainHeaderEmailLabelFrame)
+        self.mainHeaderEmailLabel.setObjectName("mainHeaderEmailLabel")
+        self.horizontalLayout_72.addWidget(self.mainHeaderEmailLabel)
+        self.horizontalLayout_71.addWidget(self.mainHeaderEmailLabelFrame)
+        self.horizontalLayout_63.addWidget(self.widget_22)
+        self.widget_21 = QtWidgets.QWidget(parent=self.mainBodyHeader)
+        self.widget_21.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_21.setObjectName("widget_21")
+        self.horizontalLayout_74 = QtWidgets.QHBoxLayout(self.widget_21)
+        self.horizontalLayout_74.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_74.setSpacing(0)
+        self.horizontalLayout_74.setObjectName("horizontalLayout_74")
+        self.frame_30 = QtWidgets.QFrame(parent=self.widget_21)
+        self.frame_30.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_30.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_30.setObjectName("frame_30")
+        self.horizontalLayout_73 = QtWidgets.QHBoxLayout(self.frame_30)
+        self.horizontalLayout_73.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_73.setSpacing(0)
+        self.horizontalLayout_73.setObjectName("horizontalLayout_73")
+        self.localTimeLabel = QtWidgets.QLabel(parent=self.frame_30)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.localTimeLabel.setFont(font)
+        self.localTimeLabel.setObjectName("localTimeLabel")
+        self.horizontalLayout_73.addWidget(self.localTimeLabel)
+        self.horizontalLayout_74.addWidget(self.frame_30)
+        self.horizontalLayout_63.addWidget(self.widget_21)
+        self.verticalLayout_5.addWidget(self.mainBodyHeader)
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.mainBodyContainer)
         self.stackedWidget.setObjectName("stackedWidget")
         self.homePage = QtWidgets.QWidget()
@@ -276,218 +354,241 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(10, 0, 0, 0)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.homeHeaderContainer = QtWidgets.QWidget(parent=self.homePage)
-        self.homeHeaderContainer.setStyleSheet("")
-        self.homeHeaderContainer.setObjectName("homeHeaderContainer")
-        self.horizontalLayout_36 = QtWidgets.QHBoxLayout(self.homeHeaderContainer)
-        self.horizontalLayout_36.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_36.setSpacing(0)
-        self.horizontalLayout_36.setObjectName("horizontalLayout_36")
-        self.homeHeaderLabelFrame = QtWidgets.QFrame(parent=self.homeHeaderContainer)
-        self.homeHeaderLabelFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.homeHeaderLabelFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.homeHeaderLabelFrame.setObjectName("homeHeaderLabelFrame")
-        self.horizontalLayout_37 = QtWidgets.QHBoxLayout(self.homeHeaderLabelFrame)
-        self.horizontalLayout_37.setContentsMargins(15, 6, 0, 10)
-        self.horizontalLayout_37.setSpacing(0)
-        self.horizontalLayout_37.setObjectName("horizontalLayout_37")
-        self.homeHeaderLabel = QtWidgets.QLabel(parent=self.homeHeaderLabelFrame)
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.homeHeaderLabel.setFont(font)
-        self.homeHeaderLabel.setObjectName("homeHeaderLabel")
-        self.horizontalLayout_37.addWidget(self.homeHeaderLabel)
-        self.horizontalLayout_36.addWidget(self.homeHeaderLabelFrame)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_36.addItem(spacerItem1)
-        self.verticalLayout_7.addWidget(self.homeHeaderContainer)
-        self.homeUpdateContainer = QtWidgets.QWidget(parent=self.homePage)
-        self.homeUpdateContainer.setObjectName("homeUpdateContainer")
-        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.homeUpdateContainer)
-        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        spacerItem2 = QtWidgets.QSpacerItem(521, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_12.addItem(spacerItem2)
-        self.verticalLayout_7.addWidget(self.homeUpdateContainer)
-        self.homeTableMenuContainer = QtWidgets.QWidget(parent=self.homePage)
-        self.homeTableMenuContainer.setObjectName("homeTableMenuContainer")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.homeTableMenuContainer)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.homeUpdateBtnContainer = QtWidgets.QFrame(parent=self.homeTableMenuContainer)
-        self.homeUpdateBtnContainer.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.homeUpdateBtnContainer.setStyleSheet("background-color: rgb(6, 106, 255);\n"
-"border-radius: 5px;")
-        self.homeUpdateBtnContainer.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.homeUpdateBtnContainer.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.homeUpdateBtnContainer.setObjectName("homeUpdateBtnContainer")
-        self.horizontalLayout_40 = QtWidgets.QHBoxLayout(self.homeUpdateBtnContainer)
-        self.horizontalLayout_40.setObjectName("horizontalLayout_40")
-        self.homeUpdateBtn = QtWidgets.QPushButton(parent=self.homeUpdateBtnContainer)
+        self.stackedWidget.addWidget(self.homePage)
+        self.dataPage = QtWidgets.QWidget()
+        self.dataPage.setObjectName("dataPage")
+        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.dataPage)
+        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
+        self.dataPageContainer = QtWidgets.QWidget(parent=self.dataPage)
+        self.dataPageContainer.setObjectName("dataPageContainer")
+        self.verticalLayout_32 = QtWidgets.QVBoxLayout(self.dataPageContainer)
+        self.verticalLayout_32.setContentsMargins(0, 0, 0, 10)
+        self.verticalLayout_32.setSpacing(0)
+        self.verticalLayout_32.setObjectName("verticalLayout_32")
+        self.dataHeaderContainer = QtWidgets.QWidget(parent=self.dataPageContainer)
+        self.dataHeaderContainer.setStyleSheet("")
+        self.dataHeaderContainer.setObjectName("dataHeaderContainer")
+        self.horizontalLayout_62 = QtWidgets.QHBoxLayout(self.dataHeaderContainer)
+        self.horizontalLayout_62.setObjectName("horizontalLayout_62")
+        self.dataHeaderLabelFrame = QtWidgets.QFrame(parent=self.dataHeaderContainer)
+        self.dataHeaderLabelFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.dataHeaderLabelFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.dataHeaderLabelFrame.setObjectName("dataHeaderLabelFrame")
+        self.horizontalLayout_68 = QtWidgets.QHBoxLayout(self.dataHeaderLabelFrame)
+        self.horizontalLayout_68.setObjectName("horizontalLayout_68")
+        self.dataHeaderLabel = QtWidgets.QLabel(parent=self.dataHeaderLabelFrame)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.homeUpdateBtn.setFont(font)
-        self.homeUpdateBtn.setObjectName("homeUpdateBtn")
-        self.horizontalLayout_40.addWidget(self.homeUpdateBtn)
-        self.horizontalLayout_3.addWidget(self.homeUpdateBtnContainer)
-        self.checkBoxContainer = QtWidgets.QWidget(parent=self.homeTableMenuContainer)
+        self.dataHeaderLabel.setFont(font)
+        self.dataHeaderLabel.setObjectName("dataHeaderLabel")
+        self.horizontalLayout_68.addWidget(self.dataHeaderLabel)
+        self.horizontalLayout_62.addWidget(self.dataHeaderLabelFrame)
+        self.showAllBtnFrame = QtWidgets.QFrame(parent=self.dataHeaderContainer)
+        self.showAllBtnFrame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.showAllBtnFrame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.showAllBtnFrame.setObjectName("showAllBtnFrame")
+        self.horizontalLayout_69 = QtWidgets.QHBoxLayout(self.showAllBtnFrame)
+        self.horizontalLayout_69.setObjectName("horizontalLayout_69")
+        self.showAllEntriesBtn = QtWidgets.QPushButton(parent=self.showAllBtnFrame)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.showAllEntriesBtn.setFont(font)
+        self.showAllEntriesBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.showAllEntriesBtn.setObjectName("showAllEntriesBtn")
+        self.horizontalLayout_69.addWidget(self.showAllEntriesBtn, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_62.addWidget(self.showAllBtnFrame)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_62.addItem(spacerItem2)
+        self.verticalLayout_32.addWidget(self.dataHeaderContainer)
+        self.dataPageHeaderSeperator = QtWidgets.QFrame(parent=self.dataPageContainer)
+        self.dataPageHeaderSeperator.setMaximumSize(QtCore.QSize(16777215, 1))
+        self.dataPageHeaderSeperator.setStyleSheet("background-color: #353c42;")
+        self.dataPageHeaderSeperator.setLineWidth(1)
+        self.dataPageHeaderSeperator.setFrameShape(QtWidgets.QFrame.Shape.HLine)
+        self.dataPageHeaderSeperator.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.dataPageHeaderSeperator.setObjectName("dataPageHeaderSeperator")
+        self.verticalLayout_32.addWidget(self.dataPageHeaderSeperator)
+        self.dataTableMenuContainer = QtWidgets.QWidget(parent=self.dataPageContainer)
+        self.dataTableMenuContainer.setObjectName("dataTableMenuContainer")
+        self.horizontalLayout_64 = QtWidgets.QHBoxLayout(self.dataTableMenuContainer)
+        self.horizontalLayout_64.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_64.setSpacing(10)
+        self.horizontalLayout_64.setObjectName("horizontalLayout_64")
+        self.checkBoxContainer = QtWidgets.QWidget(parent=self.dataTableMenuContainer)
         self.checkBoxContainer.setObjectName("checkBoxContainer")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.checkBoxContainer)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.checkBoxContainer)
+        self.verticalLayout_30.setContentsMargins(9, 0, 0, 0)
+        self.verticalLayout_30.setSpacing(0)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
         self.autoUpdateCheckBox = QtWidgets.QCheckBox(parent=self.checkBoxContainer)
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.autoUpdateCheckBox.setFont(font)
+        self.autoUpdateCheckBox.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.autoUpdateCheckBox.setStyleSheet("")
         self.autoUpdateCheckBox.setObjectName("autoUpdateCheckBox")
-        self.horizontalLayout_5.addWidget(self.autoUpdateCheckBox)
-        self.horizontalLayout_3.addWidget(self.checkBoxContainer)
-        self.widget_12 = QtWidgets.QWidget(parent=self.homeTableMenuContainer)
-        self.widget_12.setObjectName("widget_12")
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.widget_12)
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
-        self.label_10 = QtWidgets.QLabel(parent=self.widget_12)
+        self.verticalLayout_30.addWidget(self.autoUpdateCheckBox, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.recommendedLabel = QtWidgets.QLabel(parent=self.checkBoxContainer)
         font = QtGui.QFont()
         font.setPointSize(7)
-        font.setItalic(False)
-        self.label_10.setFont(font)
-        self.label_10.setStyleSheet("color: rgb(227, 227, 227);")
-        self.label_10.setObjectName("label_10")
-        self.verticalLayout_11.addWidget(self.label_10)
-        self.currentEmailLabel = QtWidgets.QLabel(parent=self.widget_12)
+        self.recommendedLabel.setFont(font)
+        self.recommendedLabel.setObjectName("recommendedLabel")
+        self.verticalLayout_30.addWidget(self.recommendedLabel, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout_64.addWidget(self.checkBoxContainer)
+        self.dataUpdateBtnContainer = QtWidgets.QFrame(parent=self.dataTableMenuContainer)
+        self.dataUpdateBtnContainer.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.dataUpdateBtnContainer.setStyleSheet("")
+        self.dataUpdateBtnContainer.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.dataUpdateBtnContainer.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.dataUpdateBtnContainer.setObjectName("dataUpdateBtnContainer")
+        self.horizontalLayout_65 = QtWidgets.QHBoxLayout(self.dataUpdateBtnContainer)
+        self.horizontalLayout_65.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_65.setSpacing(0)
+        self.horizontalLayout_65.setObjectName("horizontalLayout_65")
+        self.dataUpdateBtn = QtWidgets.QPushButton(parent=self.dataUpdateBtnContainer)
         font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.currentEmailLabel.setFont(font)
-        self.currentEmailLabel.setObjectName("currentEmailLabel")
-        self.verticalLayout_11.addWidget(self.currentEmailLabel)
-        self.horizontalLayout_3.addWidget(self.widget_12)
-        self.receivedEMTprogressBarContainer = QtWidgets.QWidget(parent=self.homeTableMenuContainer)
+        font.setPointSize(9)
+        self.dataUpdateBtn.setFont(font)
+        self.dataUpdateBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.dataUpdateBtn.setStyleSheet("")
+        self.dataUpdateBtn.setObjectName("dataUpdateBtn")
+        self.horizontalLayout_65.addWidget(self.dataUpdateBtn, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout_64.addWidget(self.dataUpdateBtnContainer)
+        spacerItem3 = QtWidgets.QSpacerItem(316, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_64.addItem(spacerItem3)
+        self.receivedEMTprogressBarContainer = QtWidgets.QWidget(parent=self.dataTableMenuContainer)
         self.receivedEMTprogressBarContainer.setObjectName("receivedEMTprogressBarContainer")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.receivedEMTprogressBarContainer)
-        self.verticalLayout_6.setContentsMargins(5, 5, 5, 5)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.receivedEMTprogressBarContainer)
+        self.verticalLayout_31.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.receivedEMTprogressBar = QtWidgets.QProgressBar(parent=self.receivedEMTprogressBarContainer)
+        self.receivedEMTprogressBar.setStyleSheet("background-color: #353c42;")
         self.receivedEMTprogressBar.setProperty("value", 0)
         self.receivedEMTprogressBar.setInvertedAppearance(False)
         self.receivedEMTprogressBar.setObjectName("receivedEMTprogressBar")
-        self.verticalLayout_6.addWidget(self.receivedEMTprogressBar)
+        self.verticalLayout_31.addWidget(self.receivedEMTprogressBar)
         self.updateStatusLabel = QtWidgets.QLabel(parent=self.receivedEMTprogressBarContainer)
         font = QtGui.QFont()
         font.setPointSize(8)
         self.updateStatusLabel.setFont(font)
         self.updateStatusLabel.setStyleSheet("")
         self.updateStatusLabel.setObjectName("updateStatusLabel")
-        self.verticalLayout_6.addWidget(self.updateStatusLabel, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.horizontalLayout_3.addWidget(self.receivedEMTprogressBarContainer)
-        spacerItem3 = QtWidgets.QSpacerItem(316, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
-        self.verticalLayout_7.addWidget(self.homeTableMenuContainer)
-        self.homeTableContainer = QtWidgets.QWidget(parent=self.homePage)
-        self.homeTableContainer.setStyleSheet("")
-        self.homeTableContainer.setObjectName("homeTableContainer")
-        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.homeTableContainer)
-        self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_13.setSpacing(0)
-        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        self.homeTableTab = QtWidgets.QTabWidget(parent=self.homeTableContainer)
-        self.homeTableTab.setEnabled(True)
+        self.verticalLayout_31.addWidget(self.updateStatusLabel, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.horizontalLayout_64.addWidget(self.receivedEMTprogressBarContainer)
+        self.verticalLayout_32.addWidget(self.dataTableMenuContainer)
+        self.dataTableContainer = QtWidgets.QWidget(parent=self.dataPageContainer)
+        self.dataTableContainer.setStyleSheet("")
+        self.dataTableContainer.setObjectName("dataTableContainer")
+        self.horizontalLayout_52 = QtWidgets.QHBoxLayout(self.dataTableContainer)
+        self.horizontalLayout_52.setContentsMargins(9, 0, 9, 0)
+        self.horizontalLayout_52.setSpacing(0)
+        self.horizontalLayout_52.setObjectName("horizontalLayout_52")
+        self.dataTableTab = QtWidgets.QTabWidget(parent=self.dataTableContainer)
+        self.dataTableTab.setEnabled(True)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.homeTableTab.setFont(font)
-        self.homeTableTab.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.homeTableTab.setFocusPolicy(QtCore.Qt.FocusPolicy.TabFocus)
-        self.homeTableTab.setAutoFillBackground(False)
-        self.homeTableTab.setStyleSheet("")
-        self.homeTableTab.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
-        self.homeTableTab.setIconSize(QtCore.QSize(24, 24))
-        self.homeTableTab.setObjectName("homeTableTab")
+        self.dataTableTab.setFont(font)
+        self.dataTableTab.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
+        self.dataTableTab.setFocusPolicy(QtCore.Qt.FocusPolicy.TabFocus)
+        self.dataTableTab.setAutoFillBackground(False)
+        self.dataTableTab.setStyleSheet("")
+        self.dataTableTab.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
+        self.dataTableTab.setIconSize(QtCore.QSize(24, 24))
+        self.dataTableTab.setObjectName("dataTableTab")
         self.allDataTableContainer = QtWidgets.QWidget()
         self.allDataTableContainer.setStyleSheet("")
         self.allDataTableContainer.setObjectName("allDataTableContainer")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.allDataTableContainer)
-        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_8.setSpacing(0)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.allDataTableContainer)
+        self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_26.setSpacing(0)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
         self.allTableSearchContainer = QtWidgets.QWidget(parent=self.allDataTableContainer)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.allTableSearchContainer.sizePolicy().hasHeightForWidth())
+        self.allTableSearchContainer.setSizePolicy(sizePolicy)
         self.allTableSearchContainer.setObjectName("allTableSearchContainer")
-        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.allTableSearchContainer)
-        self.horizontalLayout_11.setContentsMargins(5, 4, 0, 3)
-        self.horizontalLayout_11.setSpacing(1)
-        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.widget_10 = QtWidgets.QWidget(parent=self.allTableSearchContainer)
-        self.widget_10.setObjectName("widget_10")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.widget_10)
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_9.setSpacing(0)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.line_2 = QtWidgets.QFrame(parent=self.widget_10)
-        self.line_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.line_2.setStyleSheet("background-color: rgb(6, 106, 255);")
-        self.line_2.setLineWidth(2)
-        self.line_2.setFrameShape(QtWidgets.QFrame.Shape.HLine)
-        self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line_2.setObjectName("line_2")
-        self.verticalLayout_9.addWidget(self.line_2)
-        self.horizontalLayout_11.addWidget(self.widget_10)
-        self.homeTableSearchContainer = QtWidgets.QWidget(parent=self.allTableSearchContainer)
-        self.homeTableSearchContainer.setMinimumSize(QtCore.QSize(250, 0))
-        self.homeTableSearchContainer.setStyleSheet("")
-        self.homeTableSearchContainer.setObjectName("homeTableSearchContainer")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.homeTableSearchContainer)
-        self.horizontalLayout_10.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_10.setSpacing(0)
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.searchContainerBackground = QtWidgets.QFrame(parent=self.homeTableSearchContainer)
+        self.horizontalLayout_53 = QtWidgets.QHBoxLayout(self.allTableSearchContainer)
+        self.horizontalLayout_53.setContentsMargins(5, 4, 0, 3)
+        self.horizontalLayout_53.setSpacing(0)
+        self.horizontalLayout_53.setObjectName("horizontalLayout_53")
+        self.searchLabelFrame = QtWidgets.QWidget(parent=self.allTableSearchContainer)
+        self.searchLabelFrame.setMinimumSize(QtCore.QSize(20, 0))
+        self.searchLabelFrame.setObjectName("searchLabelFrame")
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout(self.searchLabelFrame)
+        self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_27.setSpacing(0)
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
+        self.searchLabel = QtWidgets.QLabel(parent=self.searchLabelFrame)
+        self.searchLabel.setObjectName("searchLabel")
+        self.verticalLayout_27.addWidget(self.searchLabel)
+        self.horizontalLayout_53.addWidget(self.searchLabelFrame)
+        self.dataTableSearchContainer = QtWidgets.QWidget(parent=self.allTableSearchContainer)
+        self.dataTableSearchContainer.setMinimumSize(QtCore.QSize(250, 0))
+        self.dataTableSearchContainer.setStyleSheet("")
+        self.dataTableSearchContainer.setObjectName("dataTableSearchContainer")
+        self.horizontalLayout_54 = QtWidgets.QHBoxLayout(self.dataTableSearchContainer)
+        self.horizontalLayout_54.setContentsMargins(1, 1, 1, 1)
+        self.horizontalLayout_54.setSpacing(0)
+        self.horizontalLayout_54.setObjectName("horizontalLayout_54")
+        self.searchContainerBackground = QtWidgets.QFrame(parent=self.dataTableSearchContainer)
+        self.searchContainerBackground.setMaximumSize(QtCore.QSize(16777215, 32))
         self.searchContainerBackground.setStyleSheet("")
         self.searchContainerBackground.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.searchContainerBackground.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.searchContainerBackground.setObjectName("searchContainerBackground")
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.searchContainerBackground)
-        self.horizontalLayout_9.setContentsMargins(4, 4, 5, 4)
-        self.horizontalLayout_9.setSpacing(0)
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.frame_17 = QtWidgets.QFrame(parent=self.searchContainerBackground)
-        self.frame_17.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_17.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_17.setObjectName("frame_17")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame_17)
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.searchAllTableLine = QtWidgets.QLineEdit(parent=self.frame_17)
-        self.searchAllTableLine.setStyleSheet("background-color: #16191d;")
+        self.horizontalLayout_55 = QtWidgets.QHBoxLayout(self.searchContainerBackground)
+        self.horizontalLayout_55.setContentsMargins(4, 4, 5, 4)
+        self.horizontalLayout_55.setSpacing(2)
+        self.horizontalLayout_55.setObjectName("horizontalLayout_55")
+        self.frame_21 = QtWidgets.QFrame(parent=self.searchContainerBackground)
+        self.frame_21.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_21.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_21.setObjectName("frame_21")
+        self.horizontalLayout_56 = QtWidgets.QHBoxLayout(self.frame_21)
+        self.horizontalLayout_56.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_56.setSpacing(0)
+        self.horizontalLayout_56.setObjectName("horizontalLayout_56")
+        self.searchAllTableLine = QtWidgets.QLineEdit(parent=self.frame_21)
+        self.searchAllTableLine.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.IBeamCursor))
+        self.searchAllTableLine.setStyleSheet("")
         self.searchAllTableLine.setObjectName("searchAllTableLine")
-        self.horizontalLayout_7.addWidget(self.searchAllTableLine)
-        self.horizontalLayout_9.addWidget(self.frame_17)
-        self.frame_18 = QtWidgets.QFrame(parent=self.searchContainerBackground)
-        self.frame_18.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_18.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_18.setObjectName("frame_18")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.frame_18)
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_8.setSpacing(0)
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.searchAllTableBtn = QtWidgets.QPushButton(parent=self.frame_18)
+        self.horizontalLayout_56.addWidget(self.searchAllTableLine)
+        self.horizontalLayout_55.addWidget(self.frame_21)
+        self.frame_22 = QtWidgets.QFrame(parent=self.searchContainerBackground)
+        self.frame_22.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_22.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_22.setObjectName("frame_22")
+        self.horizontalLayout_57 = QtWidgets.QHBoxLayout(self.frame_22)
+        self.horizontalLayout_57.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_57.setSpacing(0)
+        self.horizontalLayout_57.setObjectName("horizontalLayout_57")
+        self.searchAllTableBtn = QtWidgets.QPushButton(parent=self.frame_22)
         self.searchAllTableBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.searchAllTableBtn.setStyleSheet("padding: 2px;")
         self.searchAllTableBtn.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(":/icons_light/icons_light/search.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.searchAllTableBtn.setIcon(icon7)
         self.searchAllTableBtn.setIconSize(QtCore.QSize(20, 20))
         self.searchAllTableBtn.setObjectName("searchAllTableBtn")
-        self.horizontalLayout_8.addWidget(self.searchAllTableBtn)
-        self.horizontalLayout_9.addWidget(self.frame_18)
-        self.horizontalLayout_10.addWidget(self.searchContainerBackground)
-        self.horizontalLayout_11.addWidget(self.homeTableSearchContainer, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_57.addWidget(self.searchAllTableBtn)
+        self.horizontalLayout_55.addWidget(self.frame_22)
+        self.horizontalLayout_54.addWidget(self.searchContainerBackground)
+        self.horizontalLayout_53.addWidget(self.dataTableSearchContainer, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem4)
-        self.verticalLayout_8.addWidget(self.allTableSearchContainer)
+        self.horizontalLayout_53.addItem(spacerItem4)
+        self.verticalLayout_26.addWidget(self.allTableSearchContainer)
         self.allDataTable = QtWidgets.QTableWidget(parent=self.allDataTableContainer)
         font = QtGui.QFont()
-        font.setBold(False)
-        font.setWeight(50)
+        font.setPointSize(8)
         self.allDataTable.setFont(font)
         self.allDataTable.setAutoFillBackground(False)
-        self.allDataTable.setStyleSheet("background-color: #2c313c;\n"
-"border-left: 2px solid rgb(22, 25, 29);\n"
-"")
+        self.allDataTable.setStyleSheet("")
+        self.allDataTable.setLineWidth(1)
         self.allDataTable.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.allDataTable.setAlternatingRowColors(False)
+        self.allDataTable.setAlternatingRowColors(True)
         self.allDataTable.setObjectName("allDataTable")
         self.allDataTable.setColumnCount(5)
         self.allDataTable.setRowCount(2)
@@ -532,72 +633,40 @@ class Ui_MainWindow(object):
         self.allDataTable.horizontalHeader().setStretchLastSection(True)
         self.allDataTable.verticalHeader().setVisible(False)
         self.allDataTable.verticalHeader().setSortIndicatorShown(True)
-        self.verticalLayout_8.addWidget(self.allDataTable)
+        self.verticalLayout_26.addWidget(self.allDataTable)
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(":/icons_light/icons_light/table.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         icon8.addPixmap(QtGui.QPixmap(":/icons_blue/icons_blue/table.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.homeTableTab.addTab(self.allDataTableContainer, icon8, "")
+        self.dataTableTab.addTab(self.allDataTableContainer, icon8, "")
         self.newDataTableContainer = QtWidgets.QWidget()
         self.newDataTableContainer.setObjectName("newDataTableContainer")
-        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.newDataTableContainer)
-        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_18.setSpacing(0)
-        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.newDataTableContainer)
+        self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_28.setSpacing(0)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
         self.newTableSearchContainer = QtWidgets.QWidget(parent=self.newDataTableContainer)
         self.newTableSearchContainer.setObjectName("newTableSearchContainer")
-        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.newTableSearchContainer)
-        self.horizontalLayout_14.setContentsMargins(5, 4, 0, 4)
-        self.horizontalLayout_14.setSpacing(1)
-        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.widget_16 = QtWidgets.QWidget(parent=self.newTableSearchContainer)
-        self.widget_16.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius: 5px;")
-        self.widget_16.setObjectName("widget_16")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_16)
-        self.horizontalLayout_4.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_4.setSpacing(0)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.frame_23 = QtWidgets.QFrame(parent=self.widget_16)
-        self.frame_23.setEnabled(True)
-        self.frame_23.setStyleSheet("background-color: #16191d;")
-        self.frame_23.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_23.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_23.setObjectName("frame_23")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_23)
-        self.verticalLayout_10.setContentsMargins(4, 4, 5, 4)
-        self.verticalLayout_10.setSpacing(0)
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.frame_24 = QtWidgets.QFrame(parent=self.frame_23)
-        self.frame_24.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_24.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_24.setObjectName("frame_24")
-        self.horizontalLayout_45 = QtWidgets.QHBoxLayout(self.frame_24)
-        self.horizontalLayout_45.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_45.setSpacing(0)
-        self.horizontalLayout_45.setObjectName("horizontalLayout_45")
-        self.pushButton_8 = QtWidgets.QPushButton(parent=self.frame_24)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.pushButton_8.setFont(font)
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.horizontalLayout_45.addWidget(self.pushButton_8)
-        self.verticalLayout_10.addWidget(self.frame_24)
-        self.horizontalLayout_4.addWidget(self.frame_23)
-        self.horizontalLayout_14.addWidget(self.widget_16)
+        self.horizontalLayout_58 = QtWidgets.QHBoxLayout(self.newTableSearchContainer)
+        self.horizontalLayout_58.setContentsMargins(5, 10, 0, 10)
+        self.horizontalLayout_58.setSpacing(1)
+        self.horizontalLayout_58.setObjectName("horizontalLayout_58")
+        self.markAllDoneBtn = QtWidgets.QPushButton(parent=self.newTableSearchContainer)
+        self.markAllDoneBtn.setMaximumSize(QtCore.QSize(16777215, 21))
+        self.markAllDoneBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.markAllDoneBtn.setObjectName("markAllDoneBtn")
+        self.horizontalLayout_58.addWidget(self.markAllDoneBtn)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_14.addItem(spacerItem5)
-        self.verticalLayout_18.addWidget(self.newTableSearchContainer)
+        self.horizontalLayout_58.addItem(spacerItem5)
+        self.verticalLayout_28.addWidget(self.newTableSearchContainer)
         self.newDataTable = QtWidgets.QTableWidget(parent=self.newDataTableContainer)
         font = QtGui.QFont()
-        font.setBold(False)
-        font.setWeight(50)
+        font.setPointSize(8)
         self.newDataTable.setFont(font)
         self.newDataTable.setAutoFillBackground(False)
-        self.newDataTable.setStyleSheet("background-color: #2c313c;\n"
-"border-left: 2px solid rgb(22, 25, 29);\n"
+        self.newDataTable.setStyleSheet("\n"
 "")
         self.newDataTable.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.newDataTable.setAlternatingRowColors(False)
+        self.newDataTable.setAlternatingRowColors(True)
         self.newDataTable.setObjectName("newDataTable")
         self.newDataTable.setColumnCount(6)
         self.newDataTable.setRowCount(0)
@@ -620,17 +689,23 @@ class Ui_MainWindow(object):
         self.newDataTable.horizontalHeader().setStretchLastSection(True)
         self.newDataTable.verticalHeader().setVisible(False)
         self.newDataTable.verticalHeader().setSortIndicatorShown(True)
-        self.verticalLayout_18.addWidget(self.newDataTable)
-        self.homeTableTab.addTab(self.newDataTableContainer, icon8, "")
-        self.horizontalLayout_13.addWidget(self.homeTableTab)
-        self.verticalLayout_7.addWidget(self.homeTableContainer)
-        self.homeTableMenuContainer.raise_()
-        self.homeHeaderContainer.raise_()
-        self.homeUpdateContainer.raise_()
-        self.homeTableContainer.raise_()
-        self.stackedWidget.addWidget(self.homePage)
-        self.dataPage = QtWidgets.QWidget()
-        self.dataPage.setObjectName("dataPage")
+        self.verticalLayout_28.addWidget(self.newDataTable)
+        self.dataTableTab.addTab(self.newDataTableContainer, icon8, "")
+        self.horizontalLayout_52.addWidget(self.dataTableTab)
+        self.verticalLayout_32.addWidget(self.dataTableContainer)
+        self.dataFooterContainer = QtWidgets.QWidget(parent=self.dataPageContainer)
+        self.dataFooterContainer.setObjectName("dataFooterContainer")
+        self.horizontalLayout_67 = QtWidgets.QHBoxLayout(self.dataFooterContainer)
+        self.horizontalLayout_67.setContentsMargins(18, -1, -1, -1)
+        self.horizontalLayout_67.setObjectName("horizontalLayout_67")
+        self.dataFooterLabel = QtWidgets.QLabel(parent=self.dataFooterContainer)
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        self.dataFooterLabel.setFont(font)
+        self.dataFooterLabel.setObjectName("dataFooterLabel")
+        self.horizontalLayout_67.addWidget(self.dataFooterLabel)
+        self.verticalLayout_32.addWidget(self.dataFooterContainer)
+        self.horizontalLayout_51.addWidget(self.dataPageContainer)
         self.stackedWidget.addWidget(self.dataPage)
         self.reportPage = QtWidgets.QWidget()
         self.reportPage.setStyleSheet("")
@@ -991,6 +1066,10 @@ class Ui_MainWindow(object):
         self.checkBox = QtWidgets.QCheckBox(parent=self.infoPage)
         self.checkBox.setGeometry(QtCore.QRect(240, 100, 70, 17))
         self.checkBox.setObjectName("checkBox")
+        self.lcdNumber = QtWidgets.QLCDNumber(parent=self.infoPage)
+        self.lcdNumber.setGeometry(QtCore.QRect(320, 560, 64, 23))
+        self.lcdNumber.setProperty("value", 10.23)
+        self.lcdNumber.setObjectName("lcdNumber")
         self.stackedWidget.addWidget(self.infoPage)
         self.helpPage = QtWidgets.QWidget()
         self.helpPage.setObjectName("helpPage")
@@ -1000,8 +1079,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
-        self.homeTableTab.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
+        self.dataTableTab.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1012,7 +1091,7 @@ class Ui_MainWindow(object):
         self.homeBtn.setToolTip(_translate("MainWindow", "Home"))
         self.homeBtn.setText(_translate("MainWindow", "Home"))
         self.dataBtn.setToolTip(_translate("MainWindow", "Data Analysis"))
-        self.dataBtn.setText(_translate("MainWindow", "Data Analysis"))
+        self.dataBtn.setText(_translate("MainWindow", "EMT Data"))
         self.reportBtn.setToolTip(_translate("MainWindow", "View Reports"))
         self.reportBtn.setText(_translate("MainWindow", "Reports"))
         self.settingsBtn.setToolTip(_translate("MainWindow", "Go to settings"))
@@ -1021,12 +1100,16 @@ class Ui_MainWindow(object):
         self.infoBtn.setText(_translate("MainWindow", "Information"))
         self.helpBtn.setToolTip(_translate("MainWindow", "Get more help"))
         self.helpBtn.setText(_translate("MainWindow", "Help"))
-        self.homeHeaderLabel.setText(_translate("MainWindow", "Home"))
-        self.homeUpdateBtn.setText(_translate("MainWindow", "Update"))
+        self.label_9.setText(_translate("MainWindow", "Email:"))
+        self.mainHeaderEmailLabel.setText(_translate("MainWindow", "prolittle101@hotmail.com"))
+        self.localTimeLabel.setText(_translate("MainWindow", "3:43 PM"))
+        self.dataHeaderLabel.setText(_translate("MainWindow", "EMT Confirmations (showing up to 100 confirmations)"))
+        self.showAllEntriesBtn.setText(_translate("MainWindow", "Show All"))
         self.autoUpdateCheckBox.setText(_translate("MainWindow", "Auto Update"))
-        self.label_10.setText(_translate("MainWindow", "Current Email:"))
-        self.currentEmailLabel.setText(_translate("MainWindow", "Brendanmiss@hotmail.com"))
+        self.recommendedLabel.setText(_translate("MainWindow", "(Recommended)"))
+        self.dataUpdateBtn.setText(_translate("MainWindow", "Manual Update"))
         self.updateStatusLabel.setText(_translate("MainWindow", "Press \'Update\' to scan for new EMTs"))
+        self.searchLabel.setText(_translate("MainWindow", "Search:"))
         item = self.allDataTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.allDataTable.verticalHeaderItem(1)
@@ -1064,8 +1147,10 @@ class Ui_MainWindow(object):
         item = self.allDataTable.item(1, 4)
         item.setText(_translate("MainWindow", "2345"))
         self.allDataTable.setSortingEnabled(__sortingEnabled)
-        self.homeTableTab.setTabText(self.homeTableTab.indexOf(self.allDataTableContainer), _translate("MainWindow", "All EMTs"))
-        self.pushButton_8.setText(_translate("MainWindow", "All Done"))
+        self.dataTableTab.setTabText(self.dataTableTab.indexOf(self.allDataTableContainer), _translate("MainWindow", "All EMTs"))
+        self.markAllDoneBtn.setText(_translate("MainWindow", "Mark All Done"))
+        item = self.newDataTable.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Action"))
         item = self.newDataTable.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Name"))
         item = self.newDataTable.horizontalHeaderItem(2)
@@ -1076,7 +1161,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Date"))
         item = self.newDataTable.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Ref_ID"))
-        self.homeTableTab.setTabText(self.homeTableTab.indexOf(self.newDataTableContainer), _translate("MainWindow", "New EMTs"))
+        self.dataTableTab.setTabText(self.dataTableTab.indexOf(self.newDataTableContainer), _translate("MainWindow", "New EMTs"))
+        self.dataFooterLabel.setText(_translate("MainWindow", "Showing 2 of 59 entries"))
         self.reportHeaderLabel.setText(_translate("MainWindow", "Reports"))
         self.reportDateBtn.setText(_translate("MainWindow", "27 Nov 2023 - 27 Nov 2023"))
         self.pushButton_2.setText(_translate("MainWindow", "Get Report"))
