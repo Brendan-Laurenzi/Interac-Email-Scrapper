@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QRunnable, QObject, pyqtSignal
+from PyQt6.QtCore import QRunnable, QObject, pyqtSignal, QSettings
 import time
 import scrape
 import database
@@ -14,9 +14,19 @@ class UpdateWorker(QRunnable):
     def __init__(self, condition=None):
         super(UpdateWorker, self).__init__()
         self.condition = condition
-        self.email = scrape.emtEmail()
+        self.emailUser = None
+        self.emailPass = None
         self.db = database.Database()
         self.signals = WorkerSignals()
+
+        self.settings = QSettings('NoOrg', 'EMTManager')
+        try:
+            self.emailUser = self.settings.value('email username')
+            self.emailPass = self.settings.value('email password')
+            self.email = scrape.emtEmail(self.emailUser, self.emailPass)
+        except:
+            print("Email Initialize Error")
+            pass #Change this
 
     def run(self):
         self.db.connect()
@@ -46,8 +56,19 @@ class ListenWorker(QRunnable):
     def __init__(self):
         super(ListenWorker, self).__init__()
         self.shouldStop = False
-        self.email = scrape.emtEmail()
+        self.emailUser = None
+        self.emailPass = None
         self.signals = WorkerSignals()
+
+        self.settings = QSettings('NoOrg', 'EMTManager')
+        try:
+            self.emailUser = self.settings.value('email username')
+            self.emailPass = self.settings.value('email password')
+            self.email = scrape.emtEmail(self.emailUser, self.emailPass)
+        except:
+            print("Email Initialize Error")
+            pass #Change this
+
 
     def stop(self):
         print("ListenWorker received 'STOP' Signal")

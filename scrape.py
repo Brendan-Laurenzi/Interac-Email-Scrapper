@@ -53,9 +53,9 @@ def convert_to_datetime(date):
 
 class emtEmail:
 
-    def __init__(self):
-        self.emailUser = "prolittle101@hotmail.com"
-        self.emailPass = "8wLdPV_PL5$G5bj"
+    def __init__(self, emailUser, emailPass):
+        self.emailUser = emailUser
+        self.emailPass = emailPass
         self.mailServer = "outlook.office365.com" # HOTMAIL EMAIL SERVER
         self.mailBox = "Interac"
         self.emailSubject = "interac e-transfer"
@@ -160,6 +160,17 @@ class emtEmail:
         except imaplib2.IMAP4.error as e:
             print("Email Error:", e)
 
+
+    def test_credentials(self):
+        try:
+            self.mail = imaplib2.IMAP4_SSL(self.mailServer)
+            self.mail.login(self.emailUser, self.emailPass)
+            self.mail.close
+            self.mail.logout()
+            return 1
+        except imaplib2.IMAP4.error as e:
+            print("Email Error:", e)
+            return -1
 
 
 if __name__ == "__main__":

@@ -8,6 +8,7 @@ from ui_interface import *
 
 # IMPORT DATABASE 
 import database
+import scrape
 
 from threadworkers import TimeWorker, UpdateWorker, ListenWorker
 
@@ -38,6 +39,19 @@ class MainWindow(QMainWindow):
         self.menuStatus = True
         self.selectedMenu = self.ui.homeBtn
         self.isSearching = False
+        self.emailUser = None
+        self.emailPass = None
+
+        # INITIALIZE SETTINGS
+        self.settings = QSettings('NoOrg', 'EMTManager')
+        try:
+            self.resize(self.settings.value('window size'))
+            self.move(self.settings.value('window position'))
+            # *Very Insecure* Email used should not be primary/important
+            self.emailUser = self.settings.value('email username')
+            self.emailPass = self.settings.value('email password')
+        except:
+            pass
 
         ## TIME WORKER THREAD
         self.timeWorker = TimeWorker()
@@ -49,18 +63,17 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentWidget(self.ui.homePage)
         self.ui.newDataTable.horizontalHeader().setVisible(True)
         self.ui.allDataTable.horizontalHeader().setVisible(True)
+        self.ui.allTableSearchContainer.setVisible(False)
+        self.ui.dataTableTab.setCurrentIndex(1)
+        self.ui.mainHeaderEmailLabel.setText(self.emailUser)
+
 
         #TEMPORARY AS FEATURES INCOMPLETE
         self.ui.infoBtn.setVisible(False)
         self.ui.helpBtn.setVisible(False)
 
-        # INITIALIZE SETTINGS
-        self.settings = QSettings('EMTManager', 'App1')
-        try:
-            self.resize(self.settings.value('window size'))
-            self.move(self.settings.value('window position'))
-        except:
-            pass
+
+
 
         ## BUTTON CONNECTORS
         self.ui.menuBtn.clicked.connect(self.menuToggle)
@@ -71,14 +84,16 @@ class MainWindow(QMainWindow):
         self.ui.settingsBtn.clicked.connect(lambda:self.showPage(self.ui.settingPage))
         self.ui.infoBtn.clicked.connect(lambda:self.showPage(self.ui.infoPage))
         self.ui.helpBtn.clicked.connect(lambda:self.showPage(self.ui.helpPage))
-        # Home Buttons
+        # EMT Page Buttons
         self.ui.dataUpdateBtn.clicked.connect(self.confirm_manual_update)
         self.ui.autoUpdateCheckBox.toggled.connect(self.toggle_auto_update)
         self.ui.searchAllTableBtn.clicked.connect(lambda:self.search_table(self.ui.searchAllTableLine.text(), self.ui.allDataTable))
-
-
+        self.ui.dataTableTab.currentChanged.connect(self.handle_tab_change)
+        # Settings Page Buttons
+        self.ui.updateEmailSettingsBtn.clicked.connect(self.handle_email_settings_update)
 
     ## WORKER SIGNAL FUNCTIONS
+
     def handle_progress_update(self, curValue, maxValue):
         self.ui.receivedEMTprogressBar.setMaximum(maxValue)
         self.ui.receivedEMTprogressBar.setValue(curValue)
@@ -101,6 +116,36 @@ class MainWindow(QMainWindow):
 
     def handle_time_update(self, timeString):
         self.ui.localTimeLabel.setText(timeString)
+
+    ## BUTTON HANDLER FUNCTIONS
+
+    def handle_tab_change(self, index):
+        if (index == 0):
+            print('ALL EMT Tab Selected')
+            self.ui.allTableSearchContainer.setVisible(True)
+            self.ui.markAllDoneBtn.setVisible(False)
+            self.ui.printCheckBox.setVisible(False)
+        elif (index == 1):
+            print('NEW EMT Tab Selected')
+            self.ui.allTableSearchContainer.setVisible(False)
+            self.ui.markAllDoneBtn.setVisible(True)
+            self.ui.printCheckBox.setVisible(True)
+
+    def handle_email_settings_update(self):
+        newUser = self.ui.emailUserNameLineEdit.text()
+        newPass = self.ui.emailPasswordLineEdit.text()
+        email = scrape.emtEmail(newUser, newPass)
+        if (email.test_credentials() == 1):
+            print("Valid Email, Updating Settings...")
+            # *Very Insecure* Email used should not be primary/important
+            self.settings.setValue('email username', newUser)
+            self.settings.setValue('email password', newPass)
+            self.ui.mainHeaderEmailLabel.setText(newUser)
+            self.success_popup("Valid Email", "Settings have been updated!")
+        else:
+            print("Invalid Email, Settings NOT Saved")
+            self.critical_popup("Invalid Email Credentials Given", "Settings have not been updated!")
+
 
     ## UI FUNCTIONS
 
@@ -230,6 +275,28 @@ class MainWindow(QMainWindow):
             self.updateDatabase()
 
 
+    def critical_popup(self, mainText, infoText):
+        popup = QMessageBox(self)
+        popup.setStyleSheet("QWidget{background-color: #272c30;} QPushButton{padding:4px; border: 1px solid white} QPushButton:hover{background-color: rgb(0, 127, 191);}")
+        popup.setIcon(QMessageBox.Icon.Critical)
+        popup.setWindowTitle("Critical Error")
+        popup.setText(mainText)
+        popup.setInformativeText(infoText)
+        popup.setDefaultButton(QMessageBox.StandardButton.Cancel)
+
+        popup.exec()
+
+    def success_popup(self, mainText, infoText):
+        popup = QMessageBox(self)
+        popup.setStyleSheet("QWidget{background-color: #272c30;} QPushButton{padding:4px; border: 1px solid white} QPushButton:hover{background-color: rgb(0, 127, 191);}")
+        popup.setIcon(QMessageBox.Icon.Information)
+        popup.setWindowTitle("Critical Error")
+        popup.setText(mainText)
+        popup.setInformativeText(infoText)
+        popup.setDefaultButton(QMessageBox.StandardButton.Cancel)
+
+        popup.exec()
+
     # Function to be called when program exiting
     def closeEvent(self, event):
         # Stop Email Listening Thread if Active
@@ -241,7 +308,7 @@ class MainWindow(QMainWindow):
 
         threadpool.clear()
 
-        # Set settings to current values
+        # Save screen size and position preference for next launch
         self.settings.setValue('window size', self.size())
         self.settings.setValue('window position', self.pos())
 
